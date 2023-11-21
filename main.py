@@ -113,10 +113,16 @@ class Scraping:
             except NoSuchElementException:
                 fileopen.openDiretorio(mostrar)
                 if var.get():
-                    nome_arquivo = mostrar
-                    nome_excel = nome_arquivo + ".xlsx"
-                    link = r"C:\Users\felip\Desktop\\{}".format(nome_excel)
-                    os.startfile(link)
+                    diretorio_area_trabalho = os.path.join(os.path.expanduser("~"), "Desktop")
+      
+                    nome_arquivo = f"{mostrar}.xlsx"
+    
+                    caminho_arquivo = os.path.normpath(os.path.join(
+                        diretorio_area_trabalho, nome_arquivo))
+                   
+                 
+                    
+                    os.startfile(caminho_arquivo)
                 else:
                     pass
                 print("Nao existe mais elemento na página")
@@ -154,7 +160,7 @@ janela.configure(bg='#abdbe3')
 
 janela.minsize(400, 200)
 janela.resizable(False, False)
-janela.iconbitmap(r"C:\Users\felip\OneDrive\Área de Trabalho\hotel_icon.ico")
+
 #--------------------------------------------------
 rotulo = tk.Label(janela, text="Digite um lugar aqui", bg='#abdbe3', font=('Arial', 18), padx=100, pady=15)
 rotulo.grid(column=0, row=0)
